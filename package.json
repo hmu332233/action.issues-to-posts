@@ -1,0 +1,14 @@
+{
+  "name": "action.issues-to-posts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/hmu332233/action.issues-to-posts.git",
+  "author": "Minung Han <hmu332233@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -b"
+  },
+  "devDependencies": {
+    "typescript": "^4.6.4"
+  }
+}
