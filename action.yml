@@ -1,0 +1,35 @@
+name: 'issues-to-posts'
+
+inputs:
+  GITHUB_TOKEN:
+    required: true
+  GITHUB_REPOSITORY:
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 16
+      uses: actions/setup-node@v2
+      with:
+        node-version: 16
+        cache: 'yarn'
+
+    - name: Cache node modules
+      uses: actions/cache@v2
+      with:
+        path: ./node_modules
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: ${{ runner.os }}-yarn-
+
+    - name: Install
+      shell: bash
+      run: yarn
+
+    - name: Execute
+      shell: bash
+      run: yarn start
+      env:
+        GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
+        GITHUB_REPOSITORY: ${{ inputs.GITHUB_REPOSITORY }}
