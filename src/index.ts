@@ -1,4 +1,5 @@
 import { Octokit } from '@octokit/core';
+import * as core from '@actions/core';
 import type { Category, Post, GithubLabel } from './types';
 
 if (!process.env.GITHUB_TOKEN || !process.env.GITHUB_REPOSITORY) {
@@ -56,6 +57,8 @@ async function action() {
   try {
     const posts = await getPosts();
     console.log(posts);
+
+    core.setOutput('posts', posts);
   } catch (error) {
     console.log(error);
   }
