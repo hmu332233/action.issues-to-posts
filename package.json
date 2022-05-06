@@ -6,8 +6,9 @@
   "author": "Minung Han <hmu332233@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "prepare": "husky install",
     "build": "tsc -b",
-    "prepare": "husky install"
+    "start": "node lib/index.js"
   },
   "devDependencies": {
     "@types/node": "^17.0.31",
