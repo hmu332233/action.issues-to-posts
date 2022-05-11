@@ -1,5 +1,8 @@
 name: 'issues-to-posts'
 description: 'Convert github issues to posts for blog'
+branding:
+  icon: 'type'
+  color: 'yellow'
 
 inputs:
   GITHUB_TOKEN:
