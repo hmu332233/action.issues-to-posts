@@ -50,15 +50,32 @@ async function getPosts() {
     }),
   );
 
-  return posts;
+  const { data: labels } = await octokit.request(
+    'GET /repos/{owner}/{repo}/labels',
+    {
+      owner: OWNER,
+      repo: REPO,
+      per_page: 100,
+    },
+  );
+
+  const categories: Category[] = (labels as GithubLabel[]).map((label) => ({
+    id: label.id,
+    name: label.name,
+  }));
+
+  return {
+    posts,
+    categories,
+  };
 }
 
 async function action() {
   try {
-    const posts = await getPosts();
-    console.log(posts);
+    const { posts, categories } = await getPosts();
 
-    core.setOutput('posts', posts);
+    core.setOutput('posts', JSON.stringify(posts));
+    core.setOutput('categories', JSON.stringify(categories));
   } catch (error) {
     console.log(error);
   }
