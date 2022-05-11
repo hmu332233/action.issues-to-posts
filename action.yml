@@ -1,4 +1,5 @@
 name: 'issues-to-posts'
+description: 'Convert github issues to posts for blog'
 
 inputs:
   GITHUB_TOKEN:
