@@ -46,6 +46,8 @@ async function getPosts() {
         title: issue.title,
         contents,
         categories,
+        createdAt: issue.created_at,
+        updatedAt: issue.updated_at,
       };
     }),
   );

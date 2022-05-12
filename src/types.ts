@@ -3,6 +3,8 @@ export type Post = {
   title: string;
   contents: string;
   categories: Category[];
+  createdAt: string;
+  updatedAt: string;
 };
 
 export type Category = {
